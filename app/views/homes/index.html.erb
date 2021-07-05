@@ -1,0 +1,25 @@
+<h1>Poliformismo!</h1>
+
+<div class="row">
+    <ul class="commentable">
+        <% @query.each do |elem| %>
+            <li class="commentable__elem">
+                <% if elem.class == Image %>
+                    <p>Que bella imagen!</p>
+                    <img src="<%= elem.url %>" alt="">
+                    <p>Comenta!</p>
+                <% else  %>
+                    <h4> <%= elem.title %> </h4>
+                    <p> <%= elem.content %> </p>
+                    <p>Comenta!</p>
+                <% end %>
+                    
+                <ol class="commentable__comments">
+                    <% elem.comments.each do |comment| %>
+                    <li><%= comment.content %></li>
+                    <% end %>    
+                </ol>  
+            </li>
+        <% end %>  
+    </ul>
+</div>
